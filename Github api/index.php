@@ -36,9 +36,10 @@ if(isset($_GET['code'])){
 										    $response = json_decode($output, true);
 										    $final_res = array($response);
 										   $url_3 = $final_res['0']['repos_url'];	
-										   /* echo "<pre>";
+										    /* echo "<pre>";
 											print_r($final_res);										   
-										   echo "</pre>"; */										   
+										   echo "</pre>";  */	
+										   
 				/*----------------get repositories details --------------*/
 											$ch = curl_init();  
 											curl_setopt($ch, CURLOPT_HTTPHEADER,$header1);
@@ -49,9 +50,10 @@ if(isset($_GET['code'])){
 											$final_repositories = array($repositories);
                                                $final_1_repos =  $final_repositories['0'];
 											   $url_4 = $final_1_repos['0']['url'];
-											   /* echo "<pre>";
+											    echo "<pre>";
 											print_r($final_repositories);										   
-										   echo "</pre>"; */
+										   echo "</pre>"; 
+										   echo "<br>";
 				/*----------------get repository_1 -----------------------*/
 											$ch = curl_init();  
 											curl_setopt($ch, CURLOPT_HTTPHEADER,$header1);
@@ -91,7 +93,7 @@ if(isset($_GET['code'])){
 										   echo "</pre>" */;
 								/*---------------------------get repository tress -------------------------------*/
 								$tress_url = preg_replace("/\{[^}]+\}/", "", $tress);
-										echo $f_tress_url = $tress_url.'/'. $sha;
+										$f_tress_url = $tress_url.'/'. $sha;
 								
 											$ch = curl_init();  
 											curl_setopt($ch, CURLOPT_HTTPHEADER,$header1);
@@ -114,9 +116,10 @@ if(isset($_GET['code'])){
 											$respository=curl_exec($ch);
 											$respository_1 = json_decode($respository, true);
 											$final_respository_1 = array($respository_1);
-											$data_file_name = $final_respository_1['0']['tree']['0']['path'];
-											
-										   $data_file_url = $final_respository_1['0']['tree']['0']['url'];
+											echo $data_file_name = $final_respository_1['0']['tree']['0']['path'];
+											echo "<br>";
+										   echo $data_file_url = $final_respository_1['0']['tree']['0']['url'];
+										   echo "<br>";
 										 /* echo "<pre>";
 										print_r($final_respository_1);
 										echo "</pre>";  */
