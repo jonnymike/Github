@@ -49,9 +49,9 @@ if(isset($_GET['code'])){
 											$final_repositories = array($repositories);
                                                $final_1_repos =  $final_repositories['0'];
 											   $url_4 = $final_1_repos['0']['url'];
-											   echo "<pre>";
+											   /* echo "<pre>";
 											print_r($final_repositories);										   
-										   echo "</pre>";
+										   echo "</pre>"; */
 				/*----------------get repository_1 -----------------------*/
 											$ch = curl_init();  
 											curl_setopt($ch, CURLOPT_HTTPHEADER,$header1);
@@ -77,9 +77,7 @@ if(isset($_GET['code'])){
 										
 						/*--------------------------get branches master------------------*/
 											$data = preg_replace("/\{[^}]+\}/", "", $master);
-											echo $final_data = $data.'/master';
-											echo "<br>";
-											
+											$final_data = $data.'/master';
 											$ch = curl_init();  
 											curl_setopt($ch, CURLOPT_HTTPHEADER,$header1);
 											curl_setopt($ch,CURLOPT_URL,$final_data);
@@ -87,10 +85,10 @@ if(isset($_GET['code'])){
 											$output=curl_exec($ch);
 											$branches = json_decode($output, true);
 											$branches_1 = array($branches);
-                                           echo $sha =  $branches_1['0']['commit']['sha'];
-									       echo "<pre>";
+                                            $sha =  $branches_1['0']['commit']['sha'];
+									      /*  echo "<pre>";
 											print_r($branches_1);										   
-										   echo "</pre>";
+										   echo "</pre>" */;
 								/*---------------------------get repository tress -------------------------------*/
 								$tress_url = preg_replace("/\{[^}]+\}/", "", $tress);
 										echo $f_tress_url = $tress_url.'/'. $sha;
@@ -103,10 +101,10 @@ if(isset($_GET['code'])){
 											$tress_data = json_decode($tress_1, true);
 											$final_tress = array($tress_data);	
 											$respos_url = $final_tress['0']['tree']['0']['url']; 
-										    echo "<pre>";
+										   /*  echo "<pre>";
 										    print_r($final_tress);
 										    echo "</pre>";
-											echo $respos_url;
+											echo $respos_url; */
 								/*---------------------------------get repositories data-------------------*/	
 
 								$ch = curl_init();  
@@ -116,10 +114,23 @@ if(isset($_GET['code'])){
 											$respository=curl_exec($ch);
 											$respository_1 = json_decode($respository, true);
 											$final_respository_1 = array($respository_1);
-										echo "<pre>";
-									print_r($final_respository_1);
-										echo "</pre>";
-
+											$data_file_name = $final_respository_1['0']['tree']['0']['path'];
+											
+										   $data_file_url = $final_respository_1['0']['tree']['0']['url'];
+										 /* echo "<pre>";
+										print_r($final_respository_1);
+										echo "</pre>";  */
+								/*--------------------------------get file data--------------------*/
+								$ch = curl_init();  
+											curl_setopt($ch, CURLOPT_HTTPHEADER,$header1);
+											curl_setopt($ch,CURLOPT_URL,$data_file_url);
+											curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+											$file_data=curl_exec($ch);
+											$final_file_data = json_decode($file_data, true);
+											$final_file_data_1 = array($final_file_data);
+											$final_content = $final_file_data_1['0']['content'];
+										   echo $final_content_1 = base64_decode($final_content);
+											
 								
 	//header('Location:'.$index_page);
 }
