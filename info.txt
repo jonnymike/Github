@@ -1,0 +1,34 @@
+testbaseline
+websolution806@gmail.com
+baseline77!@#
+
+
+Repository name:- baseline-test
+
+
+Client ID :-8bb82c801c9ba0854812
+	
+Client Secret:- 23f14e9a81843a3f95e66469817ee2414a826014
+
+https://github.com/jonnymike/Github.git
+
+
+git commands
+
+echo "# fafasdfasdf" >> README.md
+git init
+git status
+git add *
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/jonnymike/Github
+git push -u origin master
+
+
+git remote add test https://github.com/jonnymike/Github
+
+$ git clone https://github.com/jonnymike/Github.git
+
+
+git rm file1.txt
+git commit -m "remove file1.txt"
