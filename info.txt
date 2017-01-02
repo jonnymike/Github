@@ -1,4 +1,4 @@
-testbaseline
+websolution806
 websolution806@gmail.com
 baseline77!@#
 
@@ -32,3 +32,8 @@ $ git clone https://github.com/jonnymike/Github.git
 
 git rm file1.txt
 git commit -m "remove file1.txt"
+
+
+cd windows\system32\
+windows\system32\cd..
+windows>d:
