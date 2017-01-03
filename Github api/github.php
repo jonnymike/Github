@@ -56,7 +56,7 @@ if (isset($_SESSION['github'])) {
     $final_repositories = array(
         $repositories
     );
-    $final_1_repos      = $final_repositories['0'];
+    $repos_name     = $final_repositories['0']['0']['name'];
     $url_4              = $final_repositories['0']['0']['url'];
     /*----------------get repository -----------------------*/
     $ch                 = curl_init();

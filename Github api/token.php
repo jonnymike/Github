@@ -11,11 +11,19 @@ $_SESSION['twitter'] = "twitter";
 <head> 
 </head>
 <h1>Please Click here to get Github Repositories Files:</h1><br />
-<form>
-<button formaction="http://work.seventhfoundation.com/Github/github.php">Github-Api</button>
-<button formaction="http://work.seventhfoundation.com/Github/twitter.php">Twitter</button>
+
+<form action=""method="POST">
+<input name="respos" type="submit" value=" Repositories" ></input>
 </form>
 <hr />
 </center>
 </body>
 </html>
+<?php
+if (isset($_POST['respos'])) {
+echo '<form>
+<center><button formaction="http://work.seventhfoundation.com/Github/github.php">Github-Api</button>
+<button formaction="http://work.seventhfoundation.com/Github/twitter.php">Twitter</button></center>
+</form>';
+}
+?>

@@ -154,8 +154,8 @@ $_SESSION['twitter_file3'] = $twitter_file3 = $files['4'];
 <center>
 <h1> Click here to download the files </h1>
 <form action="download.php"  method="POST">
-<input name="tw_file1" type="submit" value="<?phpecho $_SESSION['twitter_file1'];?>" ></input>
-<input name="tw_file2" type="submit" value="<?phpecho $_SESSION['twitter_file2'];?>" ></input>
-<input name="tw_file3" type="submit" value="<?phpecho $_SESSION['twitter_file3'];?>" ></input>
+<input name="tw_file1" type="submit" value="<?php echo $_SESSION['twitter_file1'];?>" ></input>
+<input name="tw_file2" type="submit" value="<?php echo $_SESSION['twitter_file2'];?>" ></input>
+<input name="tw_file3" type="submit" value="<?php echo $_SESSION['twitter_file3'];?>" ></input>
 </form>
 </center>
