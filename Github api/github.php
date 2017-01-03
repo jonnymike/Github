@@ -121,8 +121,7 @@ $_SESSION['Git_file1'] = $Git_file1 = $files['2'];
 <center>
 <h1> Click here to download the files </h1>
 <form action="git_download.php"  method="POST">
-<input name="Git_file1" type="submit" value="<?php
-echo $_SESSION['Git_file1'];
-?>" ></input>
+<input name="Git_file1" type="submit" value="<?php echo $_SESSION['Git_file1'];?>" ></input>
 </form>
 </center>
+<!--onSubmit="alert('File downloaded.');-->

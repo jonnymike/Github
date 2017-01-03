@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['code'];
-echo $_SESSION['twitter'];
+$_SESSION['twitter'];
 if (isset($_SESSION['twitter'])) {
     $code          = $_SESSION['code'];
     $client_id     = "8bb82c801c9ba0854812";

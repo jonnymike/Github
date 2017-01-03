@@ -10,7 +10,7 @@ $_SESSION['twitter'] = "twitter";
 <center>
 <head> 
 </head>
-<h1>Please Click here to get Github Files:</h1><br />
+<h1>Please Click here to get Github Repositories Files:</h1><br />
 <form>
 <button formaction="http://work.seventhfoundation.com/Github/github.php">Github-Api</button>
 <button formaction="http://work.seventhfoundation.com/Github/twitter.php">Twitter</button>
