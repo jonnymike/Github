@@ -2,6 +2,8 @@
 /*------------------Get code -----------------*/
 session_start();
 $_SESSION['code'] = $_GET['code'];
+$_SESSION['github'] = "github";
+$_SESSION['twitter'] = "twitter";
 ?>
 <html>	
 <body>
@@ -9,11 +11,9 @@ $_SESSION['code'] = $_GET['code'];
 <head> 
 </head>
 <h1>Please Click here to get Github Files:</h1><br />
-<form action="github.php"  method="POST">
-<input name="github" type="submit" value="Github_Api" ></input>
-</form>
-<form action="twitter.php"  method="POST">
-<input name="twitter" type="submit" value="Twitter" ></input>
+<form>
+<button formaction="http://work.seventhfoundation.com/Github/github.php">Github-Api</button>
+<button formaction="http://work.seventhfoundation.com/Github/twitter.php">Twitter</button>
 </form>
 <hr />
 </center>
