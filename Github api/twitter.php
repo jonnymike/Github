@@ -95,10 +95,12 @@ if (isset($_SESSION['twitter'])) {
     $final_url_1 = array(
         $url_1
     );
-    $page_url_1  = $final_url_1['0']['0']['download_url'];
-    $page_url_2  = $final_url_1['0']['1']['download_url'];
-    $page_url_3  = $final_url_1['0']['2']['download_url'];
-    
+	
+   foreach($final_url_1 as $final_url) {
+	  $page_url_1  = $final_url['0']['download_url'];
+      $page_url_2  = $final_url['1']['download_url'];
+      $page_url_3  = $final_url['2']['download_url'];
+}  
     /*----------------save file on server -----------------------*/
     
     $file = fopen(__DIR__ . '/twitter/Documentation.html', "a");
@@ -146,10 +148,11 @@ if (isset($_SESSION['twitter'])) {
 }
 /*----------------get files name to the server -----------------------*/
 $dir                       = 'twitter';
-$files                     = scandir($dir);
-$_SESSION['twitter_file1'] = $twitter_file1 = $files['2'];
-$_SESSION['twitter_file2'] = $twitter_file2 = $files['3'];
-$_SESSION['twitter_file3'] = $twitter_file3 = $files['4'];
+$file                    = scandir($dir);
+$files =  array_slice($file,2);	
+$_SESSION['twitter_file1'] = $twitter_file1 = $files['0'];
+$_SESSION['twitter_file2'] = $twitter_file2 = $files['1'];
+$_SESSION['twitter_file3'] = $twitter_file3 = $files['2'];
 ?>
 <center>
 <h1> Click here to download the files </h1>

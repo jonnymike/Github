@@ -95,7 +95,10 @@ if (isset($_SESSION['github'])) {
     $final_url_1    = array(
         $url_1
     );
-    $index_page_url = $final_url_1['0']['0']['download_url'];
+	foreach($final_url_1 as $final_url) {
+    $index_page_url = $final_url['0']['download_url'];
+	}
+	
     /*----------------save file on server -----------------------*/
     $file           = fopen(__DIR__ . '/github/index.php', "a");
     $ch             = curl_init();
@@ -111,12 +114,12 @@ if (isset($_SESSION['github'])) {
     );
     fclose($file);
 }
-
 /*----------------get files name to the server -----------------------*/
 
 $dir                   = 'github';
-$files                 = scandir($dir);
-$_SESSION['Git_file1'] = $Git_file1 = $files['2'];
+$file                 = scandir($dir);
+$files =  array_slice($file,2);
+$_SESSION['Git_file1'] = $Git_file1 = $files['0'];
 ?>
 <center>
 <h1> Click here to download the files </h1>
