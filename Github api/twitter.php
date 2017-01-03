@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['code'];
-if (isset($_POST['github'])) {
+if (isset($_POST['twitter'])) {
    $code          = $_SESSION['code'];
     $client_id     = "8bb82c801c9ba0854812";
     $client_secret = "23f14e9a81843a3f95e66469817ee2414a826014";
@@ -91,10 +91,10 @@ if (isset($_POST['github'])) {
     );
     $git_subfolder_1 = $final_repository_2['0']['0'] ['name'];
 	$git_subfolder_2 = $final_repository_2['0']['1'] ['name'];	
-    $final_1_repository_2 = $final_repository_2['0']['0']['url'];
-    /* echo "<pre>";
+    $final_1_repository_2 = $final_repository_2['0']['1']['url'];
+/*    echo "<pre>";
     print_r($final_repository_2);
-    echo "</pre>"; */ 
+    echo "</pre>";  */
     //////////////////////////////////////////////
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header1);
@@ -105,18 +105,20 @@ if (isset($_POST['github'])) {
     $final_url_1 = array(
         $url_1
     );
-   $index_page_url = $final_url_1['0']['0']['download_url'];
+        $page_url_1 = $final_url_1['0']['0']['download_url'];
+        $page_url_2 = $final_url_1['0']['1']['download_url'];
+        $page_url_3 = $final_url_1['0']['2']['download_url'];
 	
-  /*   echo "<pre>";
+    /* echo "<pre>";
     print_r($final_url_1);
-    echo "</pre>"; */
+    echo "</pre>"; */ 
     /////////////////////
 	
-    $file = fopen(__DIR__ . '/github/index.php', "a");
+    $file = fopen(__DIR__ . '/twitter/Documentation.html', "a");
 	//$file = fopen('index2.php', 'w');
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header1);
-    curl_setopt($ch, CURLOPT_URL, $index_page_url);
+    curl_setopt($ch, CURLOPT_URL, $page_url_1);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_TIMEOUT, 15);
     curl_setopt($ch, CURLOPT_FILE, $file);
@@ -127,14 +129,51 @@ if (isset($_POST['github'])) {
         $page_data
     );
 	fclose($file);  
+	
+	$file = fopen(__DIR__ . '/twitter/config.php', "a");
+	//$file = fopen('index2.php', 'w');
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $header1);
+    curl_setopt($ch, CURLOPT_URL, $page_url_2);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+    curl_setopt($ch, CURLOPT_FILE, $file);
+    $output          = curl_exec($ch);
+    $page_data       = json_decode($output, true);
+    $index_page_data = array(
+        $page_data
+    );
+	fclose($file);  
+	
+	$file = fopen(__DIR__ . '/twitter/index.php', "a");
+	//$file = fopen('index2.php', 'w');
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $header1);
+    curl_setopt($ch, CURLOPT_URL, $page_url_3);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+    curl_setopt($ch, CURLOPT_FILE, $file);
+    $output          = curl_exec($ch);
+    $page_data       = json_decode($output, true);
+    $index_page_data = array(
+        $page_data
+    );
+	fclose($file);  
 }
-$dir    = 'github';
+$dir    = 'twitter';
 $files = scandir($dir);
-$_SESSION['Git_file1']  = $Git_file1 = $files['2']; 
+/* echo "<pre>";
+print_r($files);
+echo "<pre>"; */
+$_SESSION['twitter_file1']  = $twitter_file1 = $files['2'];  
+$_SESSION['twitter_file2']  = $twitter_file2 = $files['3']; 
+$_SESSION['twitter_file3']  = $twitter_file3 = $files['4'];   
 ?>
 <center>
 <h1> Click here to download the files </h1>
-<form action="git_download.php"  method="POST">
-<input name="Git_file1" type="submit" value="<?php echo $_SESSION['Git_file1']; ?>" ></input>
+<form action="download.php"  method="POST">
+<input name="tw_file1" type="submit" value="<?php echo $_SESSION['twitter_file1']; ?>" ></input>
+<input name="tw_file2" type="submit" value="<?php echo $_SESSION['twitter_file2']; ?>" ></input>
+<input name="tw_file3" type="submit" value="<?php echo $_SESSION['twitter_file3']; ?>" ></input>
 </form>
 </center>
