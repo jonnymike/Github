@@ -12,8 +12,7 @@ if (isset($_POST['Git_file1'])) {
     header("Expires: 0");
     header("Cache-Control: no-cache, must-revalidate");
     header("Pragma: no-cache");
-    echo (readfile($FilePath . $FileName));
-	echo $FileName.'downloaded';
+    echo (readfile($FilePath . $FileName)); 
 }
 ?>
 

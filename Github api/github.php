@@ -96,11 +96,12 @@ if (isset($_SESSION['github'])) {
         $url_1
     );
 	foreach($final_url_1 as $final_url) {
+	$file_name_1 = $final_url['0']['name'];
     $index_page_url = $final_url['0']['download_url'];
 	}
 	
     /*----------------save file on server -----------------------*/
-    $file           = fopen(__DIR__ . '/github/index.php', "a");
+    $file           = fopen(__DIR__ . '/github/'.$file_name_1'', "a");
     $ch             = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header1);
     curl_setopt($ch, CURLOPT_URL, $index_page_url);

@@ -56,9 +56,9 @@ if (isset($_SESSION['twitter'])) {
     $final_repositories = array(
         $repositories
     );
-    $final_1_repos      = $final_repositories['0'];
-    $url_4              = $final_repositories['0']['0']['url'];
-    
+   foreach($final_repositories as $final_1_reposit){
+    $url_4              = $final_1_reposit['0']['url'];
+	}
     /*----------------get repository -----------------------*/
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header1);
@@ -82,9 +82,11 @@ if (isset($_SESSION['twitter'])) {
     $final_repository_2   = array(
         $repository_2
     );
-    $git_subfolder_1      = $final_repository_2['0']['0']['name'];
-    $git_subfolder_2      = $final_repository_2['0']['1']['name'];
-    $final_1_repository_2 = $final_repository_2['0']['1']['url'];
+	foreach($final_repository_2 as $final_1_reposit_2){
+    $git_subfolder_1      = $final_1_reposit_2['0']['name'];
+    $git_subfolder_2      = $final_1_reposit_2['1']['name'];
+    $final_1_repository_2 = $final_1_reposit_2['1']['url'];
+	}
     /*----------------get files -----------------------*/
     $ch                   = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header1);
@@ -94,16 +96,21 @@ if (isset($_SESSION['twitter'])) {
     $url_1       = json_decode($output, true);
     $final_url_1 = array(
         $url_1
-    );
+    ); 
 	
    foreach($final_url_1 as $final_url) {
-	  $page_url_1  = $final_url['0']['download_url'];
-      $page_url_2  = $final_url['1']['download_url'];
-      $page_url_3  = $final_url['2']['download_url'];
+	    $file_name_1 = $final_url['0']['name'];
+	    $file_name_2 = $final_url['1']['name'];
+	    $file_name_3 = $final_url['2']['name'];
+	   
+	   $page_url_1  = $final_url['0']['download_url'];
+       $page_url_2  = $final_url['1']['download_url'];
+       $page_url_3  = $final_url['2']['download_url'];
 }  
+
     /*----------------save file on server -----------------------*/
     
-    $file = fopen(__DIR__ . '/twitter/Documentation.html', "a");
+    $file = fopen(__DIR__ . '/twitter/'.$file_name_1.'', "a");
     $ch   = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header1);
     curl_setopt($ch, CURLOPT_URL, $page_url_1);
@@ -118,7 +125,7 @@ if (isset($_SESSION['twitter'])) {
     );
     fclose($file);
     /*----------------save file on server -----------------------*/
-    $file = fopen(__DIR__ . '/twitter/config.php', "a");
+    $file = fopen(__DIR__ . '/twitter/'.$file_name_2.'', "a");
     $ch   = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header1);
     curl_setopt($ch, CURLOPT_URL, $page_url_2);
@@ -132,7 +139,7 @@ if (isset($_SESSION['twitter'])) {
     );
     fclose($file);
     /*----------------save file on server -----------------------*/
-    $file = fopen(__DIR__ . '/twitter/index.php', "a");
+    $file = fopen(__DIR__ . '/twitter/'.$file_name_3.'', "a");
     $ch   = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header1);
     curl_setopt($ch, CURLOPT_URL, $page_url_3);
@@ -146,8 +153,9 @@ if (isset($_SESSION['twitter'])) {
     );
     fclose($file);
 }
+
 /*----------------get files name to the server -----------------------*/
-$dir                       = 'twitter';
+$dir                     = 'twitter';
 $file                    = scandir($dir);
 $files =  array_slice($file,2);	
 $_SESSION['twitter_file1'] = $twitter_file1 = $files['0'];
