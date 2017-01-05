@@ -6,7 +6,7 @@ $_SESSION['url_2'];
 $folder1 = $_SESSION['folder1'];
 $folder2  = $_SESSION['folder2'];
 ?>
-<html>	
+<html>    
 <body>
 <center>
 <head> 
@@ -23,8 +23,8 @@ $folder2  = $_SESSION['folder2'];
 <?php
 /*---------------------github-----------------------*/
 if (isset($_POST['file_1'])) {
-	/*------------------if file exit then delete-----------------*/
-	$files = glob('github/*'); //get all file names
+    /*------------------if file exit then delete-----------------*/
+    $files = glob('github/*'); //get all file names
    foreach($files as $file){
     if(is_file($file))
     unlink($file); //delete file
@@ -39,10 +39,10 @@ if (isset($_POST['file_1'])) {
     $final_url_1    = array(
         $url_1
     );
-	foreach($final_url_1 as $final_url) {
-	$file_name_1 = $final_url['0']['name'];
+    foreach($final_url_1 as $final_url) {
+    $file_name_1 = $final_url['0']['name'];
     $index_page_url = $final_url['0']['download_url'];
-	} 
+    } 
     /*----------------save file on server -----------------------*/
     $file   = fopen(__DIR__ . '/github/'.$file_name_1.'',"a");
     $ch             = curl_init();
@@ -58,7 +58,7 @@ if (isset($_POST['file_1'])) {
     );
     fclose($file); 
 /*----------------get files name to the server -----------------------*/
-	 $dir                   = 'github';
+     $dir                   = 'github';
 $file                 = scandir($dir);
 $files =  array_slice($file,2);
 $Git_file1 = $_SESSION['Git_file1'] = $Git_file1 = $files['0']; 
@@ -70,15 +70,12 @@ echo "
 </form>
 </center>";
 }
-
-
-
-					/*--------------------------twitter data ----------------*/
+    /*--------------------------twitter data ----------------*/
 
 
 if (isset($_POST['file_2'])) {
-	/*------------------if file exit then delete-----------------*/
-	$files = glob('twitter/*'); //get all file names
+    /*------------------if file exit then delete-----------------*/
+    $files = glob('twitter/*'); //get all file names
    foreach($files as $file){
     if(is_file($file))
     unlink($file); //delete file
@@ -92,14 +89,14 @@ if (isset($_POST['file_2'])) {
     $url_1       = json_decode($output, true);
     $final_url_1 = array(
         $url_1
-		
+        
     ); 
    foreach($final_url_1 as $final_url) {
-	    $file_name_1 = $final_url['0']['name'];
-	     $file_name_2 = $final_url['1']['name'];
-	    $file_name_3 = $final_url['2']['name'];
-	   
-	    $page_url_1  = $final_url['0']['download_url'];
+        $file_name_1 = $final_url['0']['name'];
+         $file_name_2 = $final_url['1']['name'];
+        $file_name_3 = $final_url['2']['name'];
+       
+        $page_url_1  = $final_url['0']['download_url'];
         $page_url_2  = $final_url['1']['download_url'];
        $page_url_3  = $final_url['2']['download_url'];
 }  
@@ -154,7 +151,7 @@ if (isset($_POST['file_2'])) {
 /*----------------get files name to the server -----------------------*/
  $dir                     = 'twitter';
 $file                    = scandir($dir);
-$files =  array_slice($file,2);	
+$files =  array_slice($file,2);    
 $tw_file1 = $_SESSION['twit_file1'] = $twit_file1 = $files['0'];
 $tw_file2 = $_SESSION['twit_file2'] = $twit_file2 = $files['1'];
 $tw_file3 = $_SESSION['twit_file3'] = $twit_file3 = $files['2']; 
