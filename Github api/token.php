@@ -97,7 +97,7 @@ $_SESSION['twitter'] = "twitter";
 <head> 
 </head>
 <h1>Please Click here to get Github Repositories Files:</h1><br />
-<form action="repositor_files.php"method="POST">
+<form action="repositories_files.php"method="POST">
 <input name="respos" type="submit" value="<?php echo $_SESSION['name'];?>" ></input>
 </form>
 <hr />
