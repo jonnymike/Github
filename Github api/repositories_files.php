@@ -40,7 +40,9 @@ if (isset($_POST['file_1'])) {
         $url_1
     );
     foreach($final_url_1 as $final_url) {
+		/*--------------get files name ---------------*/
     $file_name_1 = $final_url['0']['name'];
+	/*--------------get files download-url ---------------*/
     $index_page_url = $final_url['0']['download_url'];
     } 
     /*----------------save file on server -----------------------*/
@@ -92,10 +94,11 @@ if (isset($_POST['file_2'])) {
         
     ); 
    foreach($final_url_1 as $final_url) {
+	   /*--------------get files name ---------------*/
         $file_name_1 = $final_url['0']['name'];
-         $file_name_2 = $final_url['1']['name'];
+        $file_name_2 = $final_url['1']['name'];
         $file_name_3 = $final_url['2']['name'];
-       
+   /*--------------get files download url ---------------*/
         $page_url_1  = $final_url['0']['download_url'];
         $page_url_2  = $final_url['1']['download_url'];
        $page_url_3  = $final_url['2']['download_url'];
