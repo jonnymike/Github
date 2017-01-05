@@ -2,8 +2,6 @@
 		/*------------------Get code -----------------*/
 	session_start();
 	$_SESSION['code']    = $_GET['code'];
-	$_SESSION['github']  = "github";
-	$_SESSION['twitter'] = "twitter";
 	$code                = $_GET['code'];
 	$client_id           = "8bb82c801c9ba0854812";
 	$client_secret       = "23f14e9a81843a3f95e66469817ee2414a826014";
